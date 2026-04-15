@@ -89,15 +89,17 @@
       gap: 12px;
     }
 
-    .hero-links a {
-      display: inline-block;
-      padding: 10px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.02);
-      color: var(--text);
-      transition: 0.2s ease;
-    }
+   .hero-links a {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  color: var(--text);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  transition: 0.2s ease;
+}
 
     .hero-links a:hover {
       background: var(--accent-soft);
@@ -206,6 +208,29 @@
       gap: 12px;
       flex-wrap: wrap;
     }
+    .projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.project {
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.02);
+  margin: 0;
+}
+
+.project:first-of-type {
+  padding-top: 20px;
+}
+
+@media (min-width: 900px) {
+  .projects-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 
     .project-title h3 {
       margin: 0;
@@ -273,6 +298,38 @@
         grid-template-columns: 1fr 1fr;
       }
     }
+    .project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.project-button {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  color: var(--text);
+  font-size: 0.95rem;
+  transition: 0.2s ease;
+}
+
+.project-button:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+    .card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+}
   </style>
 </head>
 <body>
@@ -281,12 +338,14 @@
   <div class="container hero">
     <div class="hero-top">
       <div style="display:flex; align-items:center; gap:24px; flex-wrap:wrap;">
-        <img src="profile.jpg" alt="Hamzah Zuhrah profile photo" style="width:120px; height:120px; object-fit:cover; border-radius:50%; border:3px solid #1e3359; box-shadow:0 8px 20px rgba(0,0,0,0.25);">
-
+<img src="profile.jpg" alt="Hamzah Zuhrah profile photo" style="width:130px; height:130px; object-fit:cover; object-position:center; border-radius:50%; border:3px solid rgba(77,181,255,0.35); box-shadow:0 10px 24px rgba(0,0,0,0.28); background:#0d1b33;">
         <div class="name-block">
-          <h1>Hamzah Zuhrah</h1>
-          <p class="subtitle">Cybersecurity Student | Kali Linux | CompTIA Security+ in Progress</p>
-        </div>
+  <h1>Hamzah Zuhrah</h1>
+  <p class="subtitle">Cybersecurity Student | Kali Linux | CompTIA Security+ in Progress</p>
+  <p class="muted" style="margin-top:10px; max-width:560px;">
+    Interested in cybersecurity, Linux-based system security, and practical security projects that strengthen real-world technical skills.
+  </p>
+</div>
       </div>
 
       <div class="hero-links">
@@ -298,10 +357,10 @@
 
 
       <p class="hero-summary">
-        Cybersecurity student at Old Dominion University with hands-on experience in Kali Linux, Linux administration,
-        networking, security labs, and technical documentation. Currently building practical skills through coursework,
-        lab-based projects, and a developing Secure File Transfer System.
-      </p>
+  Cybersecurity student at Old Dominion University with hands-on experience in Kali Linux, Linux administration,
+  networking, access control, and technical lab documentation. Focused on building practical security skills through
+  system configuration, command-line work, and project-based learning, including a developing Secure File Transfer System.
+</p>
     </div>
   </header>
 
@@ -360,43 +419,55 @@
 
       <section class="card" id="projects">
         <h2>Projects</h2>
+        <div class="projects-grid">
+
+       <div class="project">
+  <div class="project-title">
+    <h3>🔐 Secure File Transfer System</h3>
+<span class="project-status">🚧 In Progress</span>  </div>
+
+  <p class="muted">
+    Designing and implementing a secure file transfer system that ensures data confidentiality, integrity, and authentication using encryption techniques.
+  </p>
+
+  <ul>
+    <li>Implementing encryption for secure data transmission</li>
+    <li>Applying authentication mechanisms to verify users</li>
+    <li>Preventing unauthorized access and data interception</li>
+    <li>Using Linux-based tools and scripting for automation</li>
+  </ul>
+
+  <p>
+    <strong>Tech Used:</strong> Linux, Bash, Networking Concepts, Cryptography Basics
+  </p>
+         <div class="project-links">
+  <a class="project-button" href="https://github.com/ThisIsHamzah99" target="_blank">GitHub Profile</a>
+  <a class="project-button" href="#" target="_blank">Project Repo (Coming Soon)</a>
+</div>
+</div>
+
+        <<div class="project">
+  <div class="project-title">
+    <h3>🐧 Kali Linux Security and Administration Labs</h3>
+  </div>
+  <p class="muted">
+    Completed hands-on Linux assignments focused on command-line usage, user and group management,
+    password tasks, file permissions, storage management, shell scripting, and automation.
+  </p>
+  <p><strong>Focus Areas:</strong> Linux Administration, Permissions, Shell Scripting, System Configuration</p>
+</div>
 
         <div class="project">
-          <div class="project-title">
-            <h3>Secure File Transfer System</h3>
-            <span class="project-status">In Progress</span>
+  <div class="project-title">
+    <h3>🌐 Networking and Infrastructure Virtual Labs</h3>
+  </div>
+  <p class="muted">
+    Completed virtual machine and network simulation labs covering networking topologies, protocols,
+    IP addressing, routing, packet analysis, and foundational network security concepts.
+  </p>
+  <p><strong>Focus Areas:</strong> Networking Fundamentals, Protocols, Routing, Packet Analysis, Network Security</p>
+</div>
           </div>
-          <p class="muted">
-            Developing a project focused on secure file transmission, confidentiality, and integrity. This project is
-            helping me strengthen my understanding of secure communication workflows, authentication, and safe file handling.
-          </p>
-          <ul>
-            <li>Designing a secure file transfer workflow</li>
-            <li>Exploring authentication and access control concepts</li>
-            <li>Applying security-focused thinking to file handling and data protection</li>
-            <li>Using GitHub for version control and project development</li>
-          </ul>
-        </div>
-
-        <div class="project">
-          <div class="project-title">
-            <h3>Kali Linux Security and Administration Labs</h3>
-          </div>
-          <p class="muted">
-            Completed hands-on Linux assignments focused on practical system administration, command-line usage,
-            user account management, password-related tasks, file permissions, and automation.
-          </p>
-        </div>
-
-        <div class="project">
-          <div class="project-title">
-            <h3>Networking and Infrastructure Virtual Labs</h3>
-          </div>
-          <p class="muted">
-            Completed labs covering networking architecture, protocols, IP addressing, routing, topologies,
-            packet behavior, and foundational network security concepts.
-          </p>
-        </div>
       </section>
 
       <section class="card" id="labs">
