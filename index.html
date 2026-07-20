@@ -252,31 +252,28 @@
       gap: 22px;
     }
 
-    .screenshot-block {
-      margin-top: 18px;
-    }
-
-    .screenshot-block + .screenshot-block {
-      margin-top: 26px;
-    }
-
-    .screenshot-block p:first-child {
-      font-size: 1.02rem;
-      margin-bottom: 10px;
-      font-weight: bold;
-    }
-
-    .screenshot-frame {
+    .report-frame {
+      margin-top: 20px;
       border: 1px solid var(--border);
       border-radius: 14px;
       overflow: hidden;
-      background: rgba(255,255,255,0.02);
+      background: #fff;
       box-shadow: 0 10px 24px rgba(0,0,0,0.18);
     }
 
-    .screenshot-frame img {
+    .report-frame iframe {
       width: 100%;
+      height: 760px;
       display: block;
+      border: 0;
+    }
+
+    .report-details {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border: 1px solid rgba(77,181,255,0.22);
+      border-radius: 14px;
+      background: rgba(77,181,255,0.06);
     }
 
     .cert-line {
@@ -336,6 +333,12 @@
         grid-template-columns: 1fr 1fr;
       }
     }
+
+    @media (max-width: 640px) {
+      .report-frame iframe {
+        height: 520px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -379,7 +382,7 @@
       <a href="#projects">Projects</a>
       <a href="#labs">Hands-On Labs</a>
       <a href="#evidence">Technical Evidence</a>
-      <a href="#screenshots">Screenshots</a>
+      <a href="#lab-report">Lab Report</a>
       <a href="#papers">Academic Papers</a>
       <a href="#certifications">Certifications</a>
       <a href="#contact">Contact</a>
@@ -550,37 +553,35 @@
         </div>
       </section>
 
-      <section class="card" id="screenshots">
-        <h2>Lab Screenshots</h2>
+      <section class="card" id="lab-report">
+        <h2>CYSE 301 Password Cracking Lab Report</h2>
+        <p class="muted">
+          An evidence-based report documenting a controlled password-cracking lab across Linux and Windows systems.
+          The assignment covers user and group configuration, password hash extraction, dictionary attacks,
+          numeric brute force, and defensive lessons learned from the results.
+        </p>
 
-        <div class="screenshot-block">
-          <p><strong>Command-Line Account Inspection</strong></p>
-          <div class="screenshot-frame">
-            <img src="kali-terminal.png" alt="Kali Linux Terminal showing user command execution">
-          </div>
-          <p class="muted" style="margin-top:10px;">
-            Example of Linux command-line usage to inspect account-related system information.
-          </p>
+        <div class="report-details">
+          <p><strong>Assignment 5: Password Cracking</strong></p>
+          <ul>
+            <li>Created controlled Linux accounts and evaluated yescrypt password hashes with John the Ripper</li>
+            <li>Extracted and tested Windows NTLM records in an isolated virtual lab</li>
+            <li>Compared dictionary and numeric brute-force techniques, including a raw-MD5 extra-credit exercise</li>
+            <li>Documented findings, evidence, and practical password-defense recommendations</li>
+          </ul>
         </div>
 
-        <div class="screenshot-block">
-          <p><strong>User Account Creation and Management</strong></p>
-          <div class="screenshot-frame">
-            <img src="user-creation.png" alt="Creating a new user in Kali Linux using useradd">
-          </div>
-          <p class="muted" style="margin-top:10px;">
-            Demonstrates user account creation and basic administrative account management in Kali Linux.
-          </p>
+        <div class="project-links">
+          <a class="project-button" href="CYSE301_Assignment5_Password_Cracking_Report_Hamzah_Zuhrah.pdf" target="_blank">Open Full Report</a>
+          <a class="project-button" href="CYSE301_Assignment5_Password_Cracking_Report_Hamzah_Zuhrah.pdf" download>Download Report</a>
         </div>
 
-        <div class="screenshot-block">
-          <p><strong>Disk Management and Partition Configuration</strong></p>
-          <div class="screenshot-frame">
-            <img src="disk-management.png" alt="Disk partitioning and management in Kali Linux">
-          </div>
-          <p class="muted" style="margin-top:10px;">
-            Shows disk and partition management tasks performed in a Linux lab environment.
-          </p>
+        <div class="report-frame">
+          <iframe
+            src="CYSE301_Assignment5_Password_Cracking_Report_Hamzah_Zuhrah.pdf#view=FitH"
+            title="CYSE 301 Assignment 5 Password Cracking Lab Report"
+            loading="lazy">
+          </iframe>
         </div>
       </section>
       
