@@ -211,6 +211,95 @@
       margin: 0;
     }
 
+    .featured-project {
+      position: relative;
+      overflow: hidden;
+      padding: 28px;
+      border-color: rgba(77,181,255,0.42);
+      background:
+        radial-gradient(circle at top right, rgba(77,181,255,0.14), transparent 34%),
+        linear-gradient(145deg, rgba(77,181,255,0.07), rgba(255,255,255,0.02));
+    }
+
+    .featured-project::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 4px;
+      background: linear-gradient(var(--accent), #8ee3ff);
+    }
+
+    .project-kicker {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .project-lead {
+      max-width: 850px;
+      margin: 16px 0 0;
+      color: #dbe7f5;
+      font-size: 1.03rem;
+    }
+
+    .project-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 22px 0;
+    }
+
+    .metric {
+      min-width: 0;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      background: rgba(7,16,31,0.48);
+    }
+
+    .metric strong,
+    .metric span {
+      display: block;
+    }
+
+    .metric strong {
+      color: var(--accent);
+      font-size: 1.12rem;
+    }
+
+    .metric span {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 0.83rem;
+    }
+
+    .project-columns {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .project-columns h4 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .project-columns ul {
+      color: var(--muted);
+    }
+
+    .project-tech {
+      margin: 20px 0 0;
+      padding: 14px 16px;
+      border: 1px solid rgba(77,181,255,0.2);
+      border-radius: 12px;
+      background: rgba(77,181,255,0.06);
+      color: #dbe7f5;
+    }
+
     .project:first-of-type {
       padding-top: 20px;
     }
@@ -332,11 +421,27 @@
       .projects-grid {
         grid-template-columns: 1fr 1fr;
       }
+
+      .featured-project {
+        grid-column: 1 / -1;
+      }
+
+      .project-metrics {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .project-columns {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     @media (max-width: 640px) {
       .report-frame iframe {
         height: 520px;
+      }
+
+      .featured-project {
+        padding: 22px;
       }
     }
   </style>
@@ -369,7 +474,8 @@
       <p class="hero-summary">
         Cybersecurity student at Old Dominion University with hands-on experience in Kali Linux, Linux administration,
         networking, access control, and technical lab documentation. Focused on building practical security skills through
-        system configuration, command-line work, and project-based learning, including a completed Secure File Transfer System.
+        system configuration, command-line work, and security engineering projects, including a fully rebuilt Secure File
+        Transfer System with authenticated encryption, verified TLS, and end-to-end testing.
       </p>
     </div>
   </header>
@@ -419,8 +525,11 @@
           <span class="tag">Technical Documentation</span>
           <span class="tag">Python</span>
           <span class="tag">Client-Server Networking</span>
-          <span class="tag">Password Hashing</span>
-          <span class="tag">Cryptography Basics</span>
+          <span class="tag">scrypt Password Hashing</span>
+          <span class="tag">AES-256-GCM</span>
+          <span class="tag">TLS</span>
+          <span class="tag">Secure Protocol Design</span>
+          <span class="tag">Security Testing</span>
         </div>
       </section>
 
@@ -438,36 +547,57 @@
         <h2>Projects</h2>
         <div class="projects-grid">
 
-         <div class="project">
+         <article class="project featured-project">
+  <p class="project-kicker">Featured security engineering project</p>
   <div class="project-title">
-    <h3>🔐 Secure File Transfer System</h3>
-    <span class="project-status">✅ Completed</span>
+    <h3>🔐 Secure File Transfer System v2</h3>
+    <span class="project-status">✅ Rebuilt &amp; tested</span>
   </div>
 
-  <p class="muted">
-    Developed a Python-based secure file transfer system that uses client-server communication,
-    user authentication, password hashing, and encryption to help protect files during transmission.
-    This project demonstrates core cybersecurity principles such as confidentiality, integrity,
-    authentication, and secure communication.
+  <p class="project-lead">
+    Re-engineered a classroom socket prototype into a security-focused file exchange platform. Files are
+    encrypted on the client with AES-256-GCM, moved through a verified TLS 1.2+ channel, and stored as
+    authenticated ciphertext inside isolated user namespaces. The design documents its threat model and
+    makes conservative claims: it demonstrates production-oriented controls without claiming a professional audit.
   </p>
 
-  <ul>
-    <li>Built a client-server file transfer system using Python sockets</li>
-    <li>Implemented user registration and login authentication</li>
-    <li>Used encryption to protect files during transmission</li>
-    <li>Stored user credentials using SHA-256 password hashing</li>
-    <li>Organized uploaded, encrypted, and decrypted files for testing and verification</li>
-  </ul>
+  <div class="project-metrics" aria-label="Project highlights">
+    <div class="metric"><strong>AES-256-GCM</strong><span>client-side file protection</span></div>
+    <div class="metric"><strong>TLS 1.2+</strong><span>verified secure transport</span></div>
+    <div class="metric"><strong>11 tests</strong><span>including real TLS E2E</span></div>
+    <div class="metric"><strong>100 MiB</strong><span>streaming transfer limit</span></div>
+  </div>
 
-  <p>
-    <strong>Tech Used:</strong> Python, Sockets, Cryptography, SHA-256 Hashing, JSON, Client-Server Networking
+  <div class="project-columns">
+    <div>
+      <h4>Security controls</h4>
+      <ul>
+        <li>Fresh salt and nonce per encrypted file with tamper detection</li>
+        <li>Salted scrypt account records and constant-time verification</li>
+        <li>Per-account/IP login throttling and temporary lockouts</li>
+        <li>Traversal-safe filenames and per-user authorization boundaries</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Engineering depth</h4>
+      <ul>
+        <li>Versioned, length-prefixed control protocol with strict size limits</li>
+        <li>Concurrent thread-pool server with socket timeouts</li>
+        <li>Streaming SHA-256 verification and atomic partial-file cleanup</li>
+        <li>Structured security audit events without logging secrets</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="project-tech">
+    <strong>Stack:</strong> Python · TCP sockets · TLS · AES-256-GCM · scrypt · SHA-256 · JSON · unittest
   </p>
 
   <div class="project-links">
-    <a class="project-button" href="https://github.com/ThisIsHamzah99" target="_blank">GitHub Profile</a>
-    <a class="project-button" href="https://github.com/ThisIsHamzah99/cyse250-secure-file-transfer" target="_blank">View Project Repository</a>
+    <a class="project-button" href="https://github.com/ThisIsHamzah99/cyse250-secure-file-transfer" target="_blank" rel="noopener">View Source &amp; Tests</a>
+    <a class="project-button" href="https://github.com/ThisIsHamzah99/cyse250-secure-file-transfer#security-and-engineering-highlights" target="_blank" rel="noopener">Architecture &amp; Threat Model</a>
   </div>
-</div>
+</article>
           <div class="project">
             <div class="project-title">
               <h3>🐧 Kali Linux Security and Administration Labs</h3>
